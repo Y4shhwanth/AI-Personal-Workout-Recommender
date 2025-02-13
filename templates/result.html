@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Recommendation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?gym,fitness') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 28px;
+            color: #FFD700;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 18px;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            text-align: left;
+        }
+        strong {
+            color: #FFD700;
+            display: inline-block;
+            width: 180px;
+            text-align: right;
+            font-weight: bold;
+            padding-right: 10px;
+        }
+        .icon {
+            width: 24px;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #FFD700;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+        .back-btn:hover {
+            background: #FFC107;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🔥 Your Workout Plan 🔥</h2>
+        <p><strong>🏋️ Workout:</strong> {{ workout }}</p>
+        <p><strong>🏋️‍♂️ Equipment:</strong> {{ equipment }}</p>
+        <p><strong>🥗 Diet Plan:</strong> {{ diet }}</p>
+        <p><strong>💡 Recommendations:</strong> {{ recommendation }}</p>
+        <a href="/" class="back-btn">🏠 Back to Home</a>
+    </div>
+
+</body>
+</html>

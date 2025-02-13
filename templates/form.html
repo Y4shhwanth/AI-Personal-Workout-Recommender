@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Planner</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('form.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 26px;
+            color: #FFD700;
+            text-transform: uppercase;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgb(2, 2, 2);
+        }
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        input:focus, select:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #FFD700;
+            color: black;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            background: #FFC107;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🏋️‍♂️ Plan Your Workout 🏋️‍♀️</h2>
+        <form action="/recommend/" method="post">
+            <input type="text" name="sex" placeholder="Sex (Male/Female)" required><br>
+            <input type="number" name="age" placeholder="Age" required><br>
+            <input type="text" name="height" placeholder="Height (m)" required><br>
+            <input type="text" name="weight" placeholder="Weight (kg)" required><br>
+            <input type="text" name="fitness_goal" placeholder="Fitness Goal (e.g., Weight Loss)" required><br>
+            <select name="fitness_type" required>
+                <option value="" disabled selected>Fitness type</option>
+                <option value="Yes">Cardio Fitness </option>
+                <option value="No">Mascular Fitness</option>
+                </select><br>
+            <select name="hypertension" required>
+                <option value="" disabled selected>Hypertension (Yes/No)</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+            <select name="diabetes" required>
+                <option value="" disabled selected>Diabetes (Yes/No)</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br>
+            <input type="submit" value="Get My Workout Plan" class="submit-btn">
+        </form>
+    </div>
+
+</body>
+</html>
