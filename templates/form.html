@@ -3,92 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Planner</title>
+    <title>Workout Planner - Your Fitness Journey Starts Here</title>
     <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #ec4899;
+            --background: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text: #1e293b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background: url('form.jpg') no-repeat center center/cover;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #4f46e5 0%, #ec4899 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .background-text {
+            position: fixed;
+            font-size: 20vw;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: 0;
+            white-space: nowrap;
+            transform: rotate(-30deg);
+            top: 50%;
+            left: -10%;
+            pointer-events: none;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: white;
-            text-align: center;
-            padding: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        main {
+            margin-top: 5rem;
+            min-height: calc(100vh - 5rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
         .container {
-            max-width: 500px;
-            margin: auto;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 480px;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(10px);
         }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
         h2 {
-            margin-bottom: 20px;
-            font-size: 26px;
-            color: #FFD700;
-            text-transform: uppercase;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
         }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
         input, select {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            background: rgba(255, 255, 255, 0.1);
-            color: rgb(2, 2, 2);
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
         }
-        ::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
+
         input:focus, select:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
         }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.5em;
+            padding-right: 2.5rem;
+        }
+
         .submit-btn {
             width: 100%;
-            padding: 12px;
-            background: #FFD700;
-            color: black;
-            font-weight: bold;
-            font-size: 18px;
-            text-transform: uppercase;
-            border-radius: 5px;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
+
         .submit-btn:hover {
-            background: #FFC107;
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Added Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .container {
+            animation: float 6s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h2>🏋️‍♂️ Plan Your Workout 🏋️‍♀️</h2>
-        <form action="/recommend/" method="post">
-            <input type="text" name="sex" placeholder="Sex (Male/Female)" required><br>
-            <input type="number" name="age" placeholder="Age" required><br>
-            <input type="text" name="height" placeholder="Height (m)" required><br>
-            <input type="text" name="weight" placeholder="Weight (kg)" required><br>
-            <input type="text" name="fitness_goal" placeholder="Fitness Goal (e.g., Weight Loss)" required><br>
-            <select name="fitness_type" required>
-                <option value="" disabled selected>Fitness type</option>
-                <option value="Yes">Cardio Fitness </option>
-                <option value="No">Mascular Fitness</option>
-                </select><br>
-            <select name="hypertension" required>
-                <option value="" disabled selected>Hypertension (Yes/No)</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select><br>
-            <select name="diabetes" required>
-                <option value="" disabled selected>Diabetes (Yes/No)</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select><br>
-            <input type="submit" value="Get My Workout Plan" class="submit-btn">
-        </form>
+    <div class="background-text">
+        TRANSFORM YOURSELF
     </div>
 
+    <nav class="navbar">
+        <a href="#" class="logo">
+            🏋️‍♂️ Workout Planner
+        </a>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Programs</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <div class="header">
+                <h2>Transform Your Life</h2>
+                <p class="subtitle">Your personalized fitness journey begins here</p>
+            </div>
+            
+            <form action="/recommend/" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sex">Sex</label>
+                        <select id="sex" name="sex" required>
+                            <option value="" disabled selected>Select sex</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" placeholder="Enter your age" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="height">Height (m)</label>
+                        <input type="number" id="height" name="height" step="0.01" placeholder="e.g., 1.75" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" name="weight" step="0.1" placeholder="e.g., 70.5" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fitness_goal">Fitness Goal</label>
+                    <select id="fitness_goal" name="fitness_goal" required>
+                        <option value="" disabled selected>Select your goal</option>
+                        <option value="weight_loss">Weight Loss</option>
+                        <option value="muscle_gain">Muscle Gain</option>
+                        <option value="endurance">Endurance</option>
+                        <option value="general_fitness">General Fitness</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fitness_type">Fitness Type</label>
+                    <select id="fitness_type" name="fitness_type" required>
+                        <option value="" disabled selected>Select fitness type</option>
+                        <option value="cardio">Cardio Fitness</option>
+                        <option value="muscular">Muscular Fitness</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="hypertension">Hypertension</label>
+                        <select id="hypertension" name="hypertension" required>
+                            <option value="" disabled selected>Select option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diabetes">Diabetes</label>
+                        <select id="diabetes" name="diabetes" required>
+                            <option value="" disabled selected>Select option</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Start Your Journey</button>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
