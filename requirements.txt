@@ -1,3 +1,5 @@
+joblib
+pydantic
 gunicorn
 tensorflow
 fastapi[standard]
