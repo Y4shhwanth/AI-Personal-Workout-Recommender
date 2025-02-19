@@ -3,3 +3,4 @@ pydantic
 gunicorn
 tensorflow
 fastapi[standard]
+pandas
