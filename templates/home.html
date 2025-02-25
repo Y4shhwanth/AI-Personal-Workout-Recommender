@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Planner Pro - Start Your Journey</title>
+    <title>Workout Planner Pro - Achieve Your Goals</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
         
@@ -126,7 +126,7 @@
             transform: translateY(-2px);
         }
 
-        .form-container {
+        .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -134,15 +134,15 @@
             padding: 2rem;
             position: relative;
             z-index: 1;
+            text-align: center;
             padding-top: 80px;
         }
 
-        .form-content {
-            max-width: 600px;
-            width: 100%;
+        .hero-content {
+            max-width: 1200px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
             border-radius: 1rem;
-            padding: 3rem;
+            padding: 4rem;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             border-top: 5px solid var(--primary);
             transform: translateY(0);
@@ -152,11 +152,11 @@
             color: #ffffff;
         }
 
-        .form-content:hover {
+        .hero-content:hover {
             transform: translateY(-10px);
         }
 
-        .form-content:before {
+        .hero-content:before {
             content: "";
             position: absolute;
             top: 0;
@@ -176,8 +176,8 @@
             100% { transform: translateX(100%); }
         }
 
-        .form-title {
-            font-size: 2.5rem;
+        .hero-title {
+            font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
@@ -185,11 +185,9 @@
             position: relative;
             display: inline-block;
             text-transform: uppercase;
-            text-align: center;
-            width: 100%;
         }
 
-        .form-title:after {
+        .hero-title:after {
             content: '';
             position: absolute;
             width: 100px;
@@ -219,44 +217,94 @@
             border-radius: 3px;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
             color: #cccccc;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        input, select, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.1);
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature {
+            background: linear-gradient(145deg, #222222 0%, #333333 100%);
+            padding: 2.5rem 2rem;
+            border-radius: 0.75rem;
+            transition: all 0.4s ease;
             border: 1px solid #444444;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            color: hsl(50, 100%, 49%);
-            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover:before {
+            transform: scaleY(1);
+        }
+
+        .feature:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #2a2a2a 0%, #3a3a3a 100%);
+            border-color: var(--primary-dark);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 193, 7, 0.2) 100%);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
             transition: all 0.3s ease;
         }
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
+        .feature:hover .feature-icon {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.15) 0%, rgba(255, 193, 7, 0.3) 100%);
         }
 
-        textarea {
-            resize: vertical;
-            height: 80px;
-        }
-
-        .submit-btn {
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            position: relative;
             display: inline-block;
-            width: 100%;
+        }
+
+        .feature p {
+            color: #bbbbbb;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
             padding: 1.1rem 2.8rem;
             font-size: 1.1rem;
             font-weight: 600;
@@ -277,10 +325,20 @@
             z-index: 1;
         }
 
-        .submit-btn:hover {
+        .cta-button:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(255, 193, 7, 0.4);
             background-position: right center;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
         }
 
         /* Decorative elements */
@@ -306,16 +364,30 @@
             background: linear-gradient(to right, transparent 0%, var(--primary) 50%, transparent 100%);
         }
 
-        @media (max-width: 768px) {
-            .form-title {
-                font-size: 2rem;
+        @media (max-width: 1024px) {
+            .hero-content {
+                padding: 3rem 2rem;
             }
-            
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
             .nav-links {
                 display: none;
             }
             
-            .form-content {
+            .hero-content {
                 padding: 2rem 1.5rem;
             }
         }
@@ -326,83 +398,46 @@
     <div class="accent-circle"></div>
 
     <nav class="navbar">
-        <a href="/" class="logo">
+        <a href="#" class="logo">
             🏋️‍♂️ WorkoutPro
         </a>
         <div class="nav-links">
-            <a href="/">Home</a>
+            <a href="#">Home</a>
             <a href="#">Programs</a>
             <a href="/about">About</a>
-            <a href="#">Contact</a>
+            <a href="/contact">Contact</a>
         </div>
     </nav>
 
-    <section class="form-container">
-        <div class="form-content">
+    <section class="hero">
+        <div class="hero-content">
             <div class="gradient-corner"></div>
-            <h1 class="form-title">Start Your <span class="highlight">Journey</span></h1>
+            <h1 class="hero-title">Professional <span class="highlight">Fitness</span> Solutions</h1>
+            <p class="hero-subtitle">Get your customized workout plan designed by certified fitness professionals to meet your specific goals, fitness level, and health requirements</p>
             
-            <form action="/recommend/" method="post">
-                <div class="form-group">
-                    <label for="sex">Gender</label>
-                    <select id="sex" name="sex" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">Tailored Programs</div>
+                    <p>Scientifically designed workouts based on your body metrics and fitness objectives</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Performance Tracking</div>
+                    <p>Advanced analytics to monitor progress and optimize your training regimen</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="age">Age</label>
-                    <input type="number" id="age" name="age" placeholder="Enter your age" required>
+                <div class="feature">
+                    <div class="feature-icon">🥗</div>
+                    <div class="feature-title">Nutrition Planning</div>
+                    <p>Evidence-based nutritional guidance to maximize your results</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="height">Height (m)</label>
-                    <input type="number" id="height" name="height" step="0.01" placeholder="e.g., 1.75" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="weight">Weight (kg)</label>
-                    <input type="number" id="weight" name="weight" step="0.1" placeholder="e.g., 70.5" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="fitness_goal">Fitness Goal</label>
-                    <select id="fitness_goal" name="fitness_goal" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="weight_loss">Weight Loss</option>
-                        <option value="muscle_gain">Muscle Gain</option>
-                        <option value="endurance">Endurance</option>
-                        <option value="general_fitness">General Fitness</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="fitness_type">Fitness Type</label>
-                    <select id="fitness_type" name="fitness_type" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="cardio">Cardio Fitness</option>
-                        <option value="muscular">Muscular Fitness</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="health">Health Conditions</label>
-                    <textarea id="health" name="health" placeholder="Mention any health conditions (e.g., hypertension, diabetes, injuries)"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    Start Your Journey
-                </button>
             </div>
+
+            <a href="/form" class="cta-button pulse">
+                Start Your Journey
+            </a>
             <div class="gradient-accent"></div>
-        </form>
+        </div>
     </section>
 
     <script>

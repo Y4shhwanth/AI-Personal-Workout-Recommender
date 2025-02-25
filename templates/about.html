@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Planner Pro - Start Your Journey</title>
+    <title>About - Workout Planner Pro</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
         
@@ -126,7 +126,7 @@
             transform: translateY(-2px);
         }
 
-        .form-container {
+        .main-content {
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -137,12 +137,11 @@
             padding-top: 80px;
         }
 
-        .form-content {
-            max-width: 600px;
-            width: 100%;
+        .about-container {
+            max-width: 1200px;
             background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
             border-radius: 1rem;
-            padding: 3rem;
+            padding: 4rem;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             border-top: 5px solid var(--primary);
             transform: translateY(0);
@@ -150,13 +149,14 @@
             position: relative;
             overflow: hidden;
             color: #ffffff;
+            margin-bottom: 2rem;
         }
 
-        .form-content:hover {
+        .about-container:hover {
             transform: translateY(-10px);
         }
 
-        .form-content:before {
+        .about-container:before {
             content: "";
             position: absolute;
             top: 0;
@@ -176,8 +176,8 @@
             100% { transform: translateX(100%); }
         }
 
-        .form-title {
-            font-size: 2.5rem;
+        .page-title {
+            font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
@@ -189,7 +189,7 @@
             width: 100%;
         }
 
-        .form-title:after {
+        .page-title:after {
             content: '';
             position: absolute;
             width: 100px;
@@ -219,68 +219,106 @@
             border-radius: 3px;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+        .intro-text {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
             color: #cccccc;
+            text-align: center;
         }
 
-        input, select, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.1);
+        .section {
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(145deg, #222222 0%, #333333 100%);
+            border-radius: 0.75rem;
+            transition: all 0.4s ease;
             border: 1px solid #444444;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            color: hsl(50, 100%, 49%);
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
-        }
-
-        textarea {
-            resize: vertical;
-            height: 80px;
-        }
-
-        .submit-btn {
-            display: inline-block;
-            width: 100%;
-            padding: 1.1rem 2.8rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: var(--accent);
-            background: linear-gradient(to right, var(--primary) 0%, var(--primary-light) 50%, var(--primary) 100%);
-            background-size: 200% auto;
-            border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
-            margin-top: 2rem;
-            border: none;
-            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
 
-        .submit-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255, 193, 7, 0.4);
-            background-position: right center;
+        .section:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover:before {
+            transform: scaleY(1);
+        }
+
+        .section:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, #2a2a2a 0%, #3a3a3a 100%);
+            border-color: var(--primary-dark);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.2);
+        }
+
+        .section ul, .section ol {
+            margin-left: 1.5rem;
+        }
+
+        .section li {
+            color: #bbbbbb;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .section p {
+            color: #bbbbbb;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .footer a:hover {
+            background-color: var(--primary);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2);
         }
 
         /* Decorative elements */
@@ -306,16 +344,30 @@
             background: linear-gradient(to right, transparent 0%, var(--primary) 50%, transparent 100%);
         }
 
-        @media (max-width: 768px) {
-            .form-title {
-                font-size: 2rem;
+        @media (max-width: 1024px) {
+            .about-container {
+                padding: 3rem 2rem;
             }
-            
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .intro-text {
+                font-size: 1.1rem;
+            }
+
             .nav-links {
                 display: none;
             }
             
-            .form-content {
+            .about-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .section {
                 padding: 2rem 1.5rem;
             }
         }
@@ -337,73 +389,55 @@
         </div>
     </nav>
 
-    <section class="form-container">
-        <div class="form-content">
+    <div class="main-content">
+        <div class="about-container">
             <div class="gradient-corner"></div>
-            <h1 class="form-title">Start Your <span class="highlight">Journey</span></h1>
+            <h1 class="page-title">About Our <span class="highlight">Workout</span> Planner</h1>
+            <p class="intro-text">Transform your fitness journey with our AI-powered workout companion that adapts to your unique needs and goals.</p>
             
-            <form action="/recommend/" method="post">
-                <div class="form-group">
-                    <label for="sex">Gender</label>
-                    <select id="sex" name="sex" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="age">Age</label>
-                    <input type="number" id="age" name="age" placeholder="Enter your age" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="height">Height (m)</label>
-                    <input type="number" id="height" name="height" step="0.01" placeholder="e.g., 1.75" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="weight">Weight (kg)</label>
-                    <input type="number" id="weight" name="weight" step="0.1" placeholder="e.g., 70.5" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="fitness_goal">Fitness Goal</label>
-                    <select id="fitness_goal" name="fitness_goal" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="weight_loss">Weight Loss</option>
-                        <option value="muscle_gain">Muscle Gain</option>
-                        <option value="endurance">Endurance</option>
-                        <option value="general_fitness">General Fitness</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="fitness_type">Fitness Type</label>
-                    <select id="fitness_type" name="fitness_type" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="cardio">Cardio Fitness</option>
-                        <option value="muscular">Muscular Fitness</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="health">Health Conditions</label>
-                    <textarea id="health" name="health" placeholder="Mention any health conditions (e.g., hypertension, diabetes, injuries)"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    Start Your Journey
-                </button>
+            <div class="section" id="mission">
+                <h2 class="section-title">Our Mission</h2>
+                <p>We believe everyone deserves access to professional-grade fitness guidance. Our AI-powered platform combines cutting-edge technology with exercise science to deliver personalized workout experiences that evolve with you.</p>
+            </div>
+            
+            <div class="section" id="benefits">
+                <h2 class="section-title">Benefits of Regular Workouts</h2>
+                <ul>
+                    <li><strong>Cardiovascular Health:</strong> Strengthen your heart and improve blood circulation through regular exercise.</li>
+                    <li><strong>Weight Management:</strong> Maintain a healthy weight through balanced workout routines and nutrition guidance.</li>
+                    <li><strong>Strength & Endurance:</strong> Build muscle strength and improve stamina with progressive training programs.</li>
+                    <li><strong>Mental Wellness:</strong> Reduce stress and anxiety while improving mood through regular physical activity.</li>
+                    <li><strong>Energy Boost:</strong> Increase daily energy levels and improve sleep quality with consistent exercise.</li>
+                </ul>
+            </div>
+            
+            <div class="section" id="features">
+                <h2 class="section-title">App Features</h2>
+                <ul>
+                    <li><strong>Personalized Workout Plans:</strong> Get AI-generated workout routines tailored to your fitness level, goals, and schedule.</li>
+                    <li><strong>Smart Diet Recommendations:</strong> Receive personalized nutrition guidance and meal plans that complement your workouts.</li>
+                    <li><strong>Equipment Guidance:</strong> Access detailed equipment tutorials and alternative exercises based on your available resources.</li>
+                    <li><strong>Health Analytics:</strong> Track your progress with comprehensive health metrics.</li>
+                </ul>
+            </div>
+            
+            <div class="section" id="getting-started">
+                <h2 class="section-title">Getting Started</h2>
+                <p>Begin your fitness journey in three simple steps:</p>
+                <ol>
+                    <li>Complete your fitness profile and health assessment.</li>
+                    <li>Set your personal fitness goals and preferences.</li>
+                    <li>Receive your customized workout and nutrition plan.</li>
+                </ol>
+                <p>Our AI system will continuously adapt your program based on your progress and feedback.</p>
+            </div>
+            
+            <div class="footer">
+                <a href="/">Return to Home</a>
             </div>
             <div class="gradient-accent"></div>
-        </form>
-    </section>
+        </div>
+    </div>
 
     <script>
         // Add scroll effect to navbar

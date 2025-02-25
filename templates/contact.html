@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Workout Planner Pro</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #ffc107;
+            --primary-light: #ffd54f;
+            --primary-dark: #c79100;
+            --accent: #212121;
+            --text: #333333;
+            --text-light: #757575;
+            --background: #f5f5f5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            background-color: #111111;
+            background-image: 
+                linear-gradient(rgba(255, 193, 7, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 193, 7, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text);
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .diagonal-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(33, 33, 33, 0.95) 0%, rgba(0, 0, 0, 0.8) 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            z-index: -1;
+        }
+
+        .accent-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 193, 7, 0.1);
+            top: 10%;
+            right: 10%;
+            z-index: -1;
+        }
+
+        .accent-circle:before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 193, 7, 0.15);
+            top: 50%;
+            left: -50px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            padding: 1.2rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Navbar scroll effect */
+        .navbar.scrolled {
+            padding: 0.75rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            background-color: rgba(33, 33, 33, 0.95);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            padding-top: 80px;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            width: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
+            border-radius: 1rem;
+            padding: 4rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border-top: 5px solid var(--primary);
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
+
+        .contact-container:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-container:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                            rgba(255, 193, 7, 0) 0%, 
+                            rgba(255, 193, 7, 0.05) 25%, 
+                            rgba(255, 193, 7, 0) 50%);
+            pointer-events: none;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #ffffff;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+        }
+
+        .page-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            border-radius: 5px;
+        }
+
+        .highlight {
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 30%;
+            bottom: 5px;
+            left: 0;
+            background-color: rgba(255, 193, 7, 0.2);
+            z-index: -1;
+            border-radius: 3px;
+        }
+
+        .intro-text {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            color: #cccccc;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-flex {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form {
+            flex: 1.5;
+        }
+
+        .info-box {
+            background: linear-gradient(145deg, #222222 0%, #333333 100%);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #444444;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-dark);
+        }
+
+        .info-box:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .info-box:hover:before {
+            transform: scaleY(1);
+        }
+
+        .info-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .info-content {
+            color: #bbbbbb;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 50%;
+            font-size: 1.3rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #dddddd;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid #444444;
+            border-radius: 0.5rem;
+            color: #f8cb00;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--accent);
+            background: linear-gradient(to right, var(--primary) 0%, var(--primary-light) 50%, var(--primary) 100%);
+            background-size: 200% auto;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 193, 7, 0.4);
+            background-position: right center;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .footer a:hover {
+            background-color: var(--primary);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2);
+        }
+
+        /* Decorative elements */
+        .gradient-corner {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(0, 0, 0, 0) 60%);
+            top: 0;
+            right: 0;
+            border-top-right-radius: 1rem;
+            z-index: 0;
+            opacity: 0.5;
+        }
+        
+        .gradient-accent {
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to right, transparent 0%, var(--primary) 50%, transparent 100%);
+        }
+
+        .map-container {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            height: 250px;
+            margin-top: 2rem;
+            border: 1px solid #444444;
+            background: rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bbbbbb;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #2a2a2a 0%, #333333 100%);
+        }
+
+        @media (max-width: 1024px) {
+            .contact-container {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .intro-text {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+            
+            .contact-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .contact-flex {
+                flex-direction: column;
+            }
+            
+            .form-group {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="diagonal-section"></div>
+    <div class="accent-circle"></div>
+
+    <nav class="navbar">
+        <a href="/" class="logo">
+            🏋️‍♂️ WorkoutPro
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="#">Programs</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="contact-container">
+            <div class="gradient-corner"></div>
+            <h1 class="page-title">Get in <span class="highlight">Touch</span></h1>
+            <p class="intro-text">Have questions about our workout plans or need personalized assistance? Our fitness experts are ready to help you achieve your goals.</p>
+            
+            <div class="contact-flex">
+                <div class="contact-info">
+                    <div class="info-box">
+                        <div class="info-title">
+                            <div class="info-icon">📍</div>
+                            <span>Our Location</span>
+                        </div>
+                        <div class="info-content">
+                            KGISL<br>
+                            Saravanampatti<br>
+                            CBE, 641035
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-title">
+                            <div class="info-icon">📱</div>
+                            <span>Contact Details</span>
+                        </div>
+                        <div class="info-content">
+                            <p>Email: kite@gmail.com</p>
+                            <p>Phone: 123-4567</p>
+                            <p>Hours: Mon-Fri, 8am - 6pm</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <div class="info-title">
+                            <div class="info-icon">🌐</div>
+                            <span>Follow Us</span>
+                        </div>
+                        <div class="info-content">
+                            <p>Stay connected with us on social media for fitness tips, success stories, and special offers.</p>
+                            <div class="social-links">
+                                <a href="#" class="social-link">f</a>
+                                <a href="#" class="social-link">t</a>
+                                <a href="#" class="social-link">in</a>
+                                <a href="#" class="social-link">ig</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            [Interactive Map Would Display Here]
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="membership">Membership Questions</option>
+                                <option value="training">Personal Training</option>
+                                <option value="support">Technical Support</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fitness-level">Your Fitness Level</label>
+                            <select id="fitness-level" name="fitness-level">
+                                <option value="" disabled selected>Select your level</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                                <option value="athlete">Professional Athlete</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <a href="/">Return to Home</a>
+            </div>
+            <div class="gradient-accent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
